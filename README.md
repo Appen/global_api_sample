@@ -4,10 +4,9 @@ Found a problem? <a href="https://github.com/Appen/global_api_sample/issues">Rep
 
 &nbsp;
 
-## Appen Global API V2 Resources
+## Appen Global API Documentation
 
-This document describes the RESTful Appen Global platform API.
-
+This document describes the RESTful Appen Global API.<br>
 Appen Global API is currently at version _**'v2'**_.
 
 ### Introduction
@@ -36,13 +35,11 @@ The Submit API consists of an HTTPS POST with the API Key in the URL and an asso
 
 URL:&nbsp;[https://api-global.appen.com/api/v2/submit/api_key][3]
 
-| ----- |
 | Resource |  Description |
 | POST /api/v2/submit/api_key/attributes.json |  API to submit content to the Appen Global Platform |
 
 The JSON body consists of an _submission_ block with nested _content_ block. &nbsp;The _content_ block includes a nested _document_ block. Document blocks must include a _project_code_ and _auth_token_ while content blocks may include an optional _source_id_ field.
 
-| ----- |
 |
 
     attribute_body =&nbsp;{
@@ -73,7 +70,7 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 
 MD5 hash of content block and API Secret.
 
- |  auth_token = Digest::MD5.hexdigest(content.to_json + api_secret) |
+|  auth_token = Digest::MD5.hexdigest(content.to_json + api_secret) |
 | Submission |  content { } |  content block |  Submission content (text) and descriptors. See Content block parameters. |
 | Content |  source_id |  source id |  Unique content identifier. Required for API Result() |
 | Content |  collection_code |  Document collection name |  Optional customer supplied string used to filter documents in Results(). |
@@ -83,7 +80,6 @@ MD5 hash of content block and API Secret.
 
 #### Ruby Example
 
-| ----- |
 |
 
     def submit
