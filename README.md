@@ -2,7 +2,6 @@
 <a href="http://appen.github.io/global_api_sample/">View documentation</a>
 Found a problem? <a href="https://github.com/Appen/global_api_sample/issues">Report them here</a>
 
-&nbsp;
 
 ## Appen Global API Documentation
 
@@ -99,7 +98,6 @@ MD5 hash of content block and API Secret.
       response = self.post("https://api-global.appen.com/api/v2/submit/#{api_key}", options)
     end
 
-&nbsp;
 
 ### Retrieving Results
 
@@ -172,7 +170,6 @@ The returned JSON body consists of a return code, return msg and results block.
       response = self.post("https://api-global.appen.com/results/#{api_key}", options)
     end
 
-&nbsp;
 
 ### Retrieving Project Status
 
@@ -216,8 +213,6 @@ The returned JSON body consists of a return code, return msg and results block.
 | Results |  Collection_complete |  Flag signaling that this collection has been marked complete. |  Note: No further submissions will be accepted on this collection. |
 
 #### Get_project_status Ruby Example
-
-| ----- |
 |
 
     def get_project_status(collection_code=nil)
@@ -237,7 +232,6 @@ The returned JSON body consists of a return code, return msg and results block.
       response = self.post("https://api-global.appen.com/project_status/#{api_key}", options)
     end
 
- |
 
 ### API Status
 
