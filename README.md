@@ -39,7 +39,6 @@ URL:&nbsp;[https://api-global.appen.com/api/v2/submit/api_key][3]
 | POST /api/v2/submit/api_key/attributes.json |  API to submit content to the Appen Global Platform |
 
 The JSON body consists of an _submission_ block with nested _content_ block. &nbsp;The _content_ block includes a nested _document_ block. Document blocks must include a _project_code_ and _auth_token_ while content blocks may include an optional _source_id_ field.
-
 |
 
     attribute_body = {
@@ -58,15 +57,10 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
     }
 
 ##### Submit API Parameter Reference
-
-| ----- |
 | Block |  Parameter |  Description |  Notes |
+|------------|---------------|------------------------------|---------|
 | Submission |  project_code |  Appen supplied Project Code |  &nbsp; |
-| Submission |  auth_token |
-
-MD5 hash of content block and API Secret.
-
-|  auth_token = Digest::MD5.hexdigest(content.to_json + api_secret) |
+| Submission |  auth_token | MD5 hash of content block and API Secret.| auth_token = Digest::MD5.hexdigest(content.to_json + api_secret) |
 | Submission |  content { } |  content block |  Submission content (text) and descriptors. See Content block parameters. |
 | Content |  source_id |  source id |  Unique content identifier. Required for API Result() |
 | Content |  collection_code |  Document collection name |  Optional customer supplied string used to filter documents in Results(). |
@@ -75,7 +69,6 @@ MD5 hash of content block and API Secret.
 | Document |  project specific params... |  Include all params required for the project. |  &nbsp; |
 
 #### Submit Ruby Example
-
 |
 
     def submit
