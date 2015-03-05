@@ -39,6 +39,7 @@ URL:&nbsp;[https://api-global.appen.com/api/v2/submit/api_key][3]
 | POST /api/v2/submit/api_key/attributes.json |  API to submit content to the Appen Global Platform |
 
 The JSON body consists of an _submission_ block with nested _content_ block. &nbsp;The _content_ block includes a nested _document_ block. Document blocks must include a _project_code_ and _auth_token_ while content blocks may include an optional _source_id_ field.
+
 |
 
     attribute_body = {
@@ -101,16 +102,16 @@ The Results API consists of a POST request with api_key in the URL. &nbsp;Result
 
 URL: <https: api-global.appen.com="" api="" v2="" results="" api_key="">
 
-| ----- |
 | Resource |  Description |
+|---------------------------------------------|-----------------------------------------------------|
 | POST /results/v2/<api_key> |  API to retrieve content from the Appen Global Platform |
 
 ##### Results API Parameter Reference
 
 The JSON body consists of a results block.
 
-| ----- |
 | Block |  Parameter |  Description |  Notes |
+|------------|---------------|------------------------------|---------|
 | Results |  project_code |  Appen supplied Project Code |  &nbsp; |
 | Results |  auth_token |  MD5 hash of content block and API Secret. |  auth_token = Digest::MD5.hexdigest(content.to_json + api_secret) |
 | Results |  content { } |  content block |  &nbsp; |
@@ -124,8 +125,8 @@ The JSON body consists of a results block.
 
 The returned JSON body consists of a return code, return msg and results block.
 
-| ----- |
 | Block |  Parameter |  Description |  Notes |
+|------------|---------------|------------------------------|---------|
 | Return Code |  200 |  HTTP_OK |  &nbsp; |
 | Return JSON |  status |  'OK' = HTTP_OK Message |  &nbsp; |
 | Return JSON |  results {} |  Results block |  &nbsp; |
@@ -173,16 +174,16 @@ The Project Status API consists of a POST request with api_key in the URL. &nbsp
 
 URL: <https: api-global.appen.com="" api="" v2="" project_status="" api_key="">
 
-| ----- |
 | Resource |  Description |
+|---------------------------------------------|-----------------------------------------------------|
 | POST /api/v2/project_status/<api_key> |  API to retrieve project statistics from the Appen Global Platform |
 
 ##### Project Status API Parameter Reference
 
 The JSON body consists of a project_status block.
 
-| ----- |
 | Block |  Parameter |  Description |  Notes |
+|------------|---------------|------------------------------|---------|
 | Project_status |  project_code |  Appen supplied Project Code |  &nbsp; |
 | Project_status |  auth_token |  MD5 hash of content block and API Secret. |  auth_token = Digest::MD5.hexdigest(content.to_json + api_secret) |
 | Project_status |  content { } |  content block |  &nbsp; |
@@ -192,8 +193,8 @@ The JSON body consists of a project_status block.
 
 The returned JSON body consists of a return code, return msg and results block.
 
-| ----- |
 | Block |  Parameter |  Description |  Notes |
+|------------|---------------|------------------------------|---------|
 | Return Code |  200 |  HTTP_OK |  &nbsp; |
 | Return JSON |  status |  'OK' = HTTP_OK Message |  &nbsp; |
 | Return JSON |  results {} |  Results block |  &nbsp; |
@@ -235,10 +236,9 @@ The Checkup API consists of an HTTPS GET and returns 200 "OK" when operating nor
 
 URL:&nbsp;<https: api-global.appen.com="" api="" v2="" global_status="">&lt;[api_key&gt;][4]
 
-| ----- |
 | Resource |  Description |
+|---------------------------------------------|-----------------------------------------------------|
 | GET /api/v2/global_status/<api_key> |  Can be used to validate API is up and running. 200 "OK" returned. |
-
 
 
 [1]: http://en.wikipedia.org/wiki/RESTful
