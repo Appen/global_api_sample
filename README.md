@@ -57,8 +57,6 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
       }
     }
 
- |
-
 &nbsp;
 
 ##### Submit API Parameter Reference
@@ -102,8 +100,6 @@ MD5 hash of content block and API Secret.
       options = { :body =&gt; attributes.to_json }
       response = self.post("https://api-global.appen.com/api/v2/submit/#{api_key}", options)
     end
-
- |
 
 &nbsp;
 
