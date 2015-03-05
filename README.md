@@ -145,8 +145,8 @@ The returned JSON body consists of a return code, return msg and results block.
 | Results |  audited |  Audited flag |  &nbsp; |
 
 #### Results Ruby Example
-
 |
+
     def get_results(ids)
       content = {
         :ids => ids
