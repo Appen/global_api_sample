@@ -100,7 +100,7 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 
 The Results API consists of a POST request with api_key in the URL. &nbsp;Results are returned in an associated JSON response body.
 
-URL: <https: api-global.appen.com="" api="" v2="" results="" api_key="">
+URL:&nbsp;[https://api-global.appen.com/api/v2/results/api_key][3]
 
 | Resource |  Description |
 |---------------------------------------------|-----------------------------------------------------|
@@ -172,7 +172,7 @@ The returned JSON body consists of a return code, return msg and results block.
 
 The Project Status API consists of a POST request with api_key in the URL. &nbsp;Project statistics are returned in an associated JSON response body.
 
-URL: <https: api-global.appen.com="" api="" v2="" project_status="" api_key="">
+URL:&nbsp;[https://api-global.appen.com/api/v2/project_status/api_key][3]
 
 | Resource |  Description |
 |---------------------------------------------|-----------------------------------------------------|
@@ -234,7 +234,7 @@ The returned JSON body consists of a return code, return msg and results block.
 
 The Checkup API consists of an HTTPS GET and returns 200 "OK" when operating normally.
 
-URL:&nbsp;<https: api-global.appen.com="" api="" v2="" global_status="">&lt;[api_key&gt;][4]
+URL:&nbsp;[https://api-global.appen.com/api/v2/global_status/>&lt;api_key&gt;][4]
 
 | Resource |  Description |
 |---------------------------------------------|-----------------------------------------------------|
