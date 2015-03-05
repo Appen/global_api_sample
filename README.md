@@ -6,7 +6,7 @@ Found a problem? <a href="https://github.com/Appen/global_api_sample/issues">Rep
 
 ## Appen Global API V2 Resources
 
-This document describes the RESTful Appen Global platform API v2.
+This document describes the RESTful Appen Global platform API.
 
 Appen Global API is currently at version _**'v2'**_.
 
@@ -20,9 +20,9 @@ Global API's are based on the [RESTful][1] concept and use [JSON][2] containers 
 
 In order to call the Global API's, Appen must issue each client an API Key and API Secret.
 
-API Key: &nbsp; &nbsp; (string) &nbsp;Each Client is assigned an API Key which is passed to the API in every request. The key is used to identify the client on the server side.
+>API Key: &nbsp; &nbsp; (string) &nbsp;Each Client is assigned an API Key which is passed to the API in every request. The key is used to identify the client on the server side.
 
-API Secret: &nbsp; (string) &nbsp;Each Client is assigned an API Secret which is used by the client to create an authentication token based on a combination of the message content and API Key. The API Secret is also used by the server to validate requests. &nbsp;Used in combination with Global API, all transactions can be authenticated and validated for authorized access.
+>API Secret: &nbsp; (string) &nbsp;Each Client is assigned an API Secret which is used by the client to create an authentication token based on a combination of the message content and API Key. The API Secret is also used by the server to validate requests. &nbsp;Used in combination with Global API, all transactions can be authenticated and validated for authorized access.
 
 #### SSL
 
