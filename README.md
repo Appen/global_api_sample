@@ -32,7 +32,7 @@ For security, all Global REST API's use HTTPS. &nbsp;HTTP protocol is not suppor
 
 The Submit API consists of an HTTPS POST with the API Key in the URL and an associated JSON request body describing the content for moderation.
 
-URL:&nbsp;[https://api-global.appen.com/api/v2/submit/api_key][3]
+URL:&nbsp;[https://api-global.appen.com/api/v2/submit/&lt;api_key&gt;]
 
 | Resource |  Description |
 |---------------------------------------------|-----------------------------------------------------|
@@ -100,7 +100,7 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 
 The Results API consists of a POST request with api_key in the URL. &nbsp;Results are returned in an associated JSON response body.
 
-URL:&nbsp;[https://api-global.appen.com/api/v2/results/api_key][3]
+URL:&nbsp;[https://api-global.appen.com/api/v2/results/&lt;api_key&gt;]
 
 | Resource |  Description |
 |---------------------------------------------|-----------------------------------------------------|
@@ -172,7 +172,7 @@ The returned JSON body consists of a return code, return msg and results block.
 
 The Project Status API consists of a POST request with api_key in the URL. &nbsp;Project statistics are returned in an associated JSON response body.
 
-URL:&nbsp;[https://api-global.appen.com/api/v2/project_status/api_key][3]
+URL:&nbsp;[https://api-global.appen.com/api/v2/project_status/&lt;api_key&gt;]
 
 | Resource |  Description |
 |---------------------------------------------|-----------------------------------------------------|
@@ -234,7 +234,7 @@ The returned JSON body consists of a return code, return msg and results block.
 
 The Checkup API consists of an HTTPS GET and returns 200 "OK" when operating normally.
 
-URL:&nbsp;[https://api-global.appen.com/api/v2/global_status/>&lt;api_key&gt;][4]
+URL:&nbsp;[https://api-global.appen.com/api/v2/global_status/&lt;api_key&gt;]
 
 | Resource |  Description |
 |---------------------------------------------|-----------------------------------------------------|
@@ -243,6 +243,4 @@ URL:&nbsp;[https://api-global.appen.com/api/v2/global_status/>&lt;api_key&gt;][4
 
 [1]: http://en.wikipedia.org/wiki/RESTful
 [2]: http://en.wikipedia.org/wiki/JSON
-[3]: https://api-global.appen.com/api/v2/submit/
-[4]: https://api-global.appen.com/api/v2/global_status/
-  </api_key></https:></api_key></https:></api_key></https:>
+
