@@ -42,13 +42,13 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 
 |
 
-    attribute_body =&nbsp;{
-      :submission =&gt;&nbsp;{
-        :project_code =&gt; xxx,
-        :auth_token =&gt; xxx,
+    attribute_body = {
+      :submission => {
+        :project_code => xxx,
+        :auth_token => xxx,
         ...,
-        :content =&gt; {
-          :source_id =&gt; xxx,
+        :content => {
+          :source_id => xxx,
           ...,
           :document {
             ...
@@ -56,8 +56,6 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
         }
       }
     }
-
-&nbsp;
 
 ##### Submit API Parameter Reference
 
@@ -82,22 +80,22 @@ MD5 hash of content block and API Secret.
 
     def submit
       content = {
-        :source_id =&gt; source_id,
-        :collection_code =&gt; 'Collection Name',
-        :document =&gt;  {
-          :query =&gt; query,
-          :url =&gt; url
+        :source_id => source_id,
+        :collection_code => 'Collection Name',
+        :document =>  {
+          :query => query,
+          :url => url
         }
       }
       auth_token = Digest::MD5.hexdigest(content.to_json + api_secret)
       attributes = {
-        :submission =&gt; {
-          :auth_token =&gt; auth_token,
-          :project_code =&gt; project_code,
-          :content =&gt; content
+        :submission => {
+          :auth_token => auth_token,
+          :project_code => project_code,
+          :content => content
         }
       }
-      options = { :body =&gt; attributes.to_json }
+      options = { :body => attributes.to_json }
       response = self.post("https://api-global.appen.com/api/v2/submit/#{api_key}", options)
     end
 
@@ -153,24 +151,24 @@ The returned JSON body consists of a return code, return msg and results block.
 |
     def get_results(ids)
       content = {
-        :ids =&gt; ids
+        :ids => ids
         -OR-
-        :date_range =&gt; {
-          :collection_code =&gt; 'Collection Code', # Optional collection name filter
-          :start_date =&gt; '2014-12-17 07:00:00',  # Timezone is always UTC
-          :end_date =&gt; '2014-12-18 06:59:59'
+        :date_range => {
+          :collection_code => 'Collection Code', # Optional collection name filter
+          :start_date => '2014-12-17 07:00:00',  # Timezone is always UTC
+          :end_date => '2014-12-18 06:59:59'
         }
       }
       auth_token = Digest::MD5.hexdigest(content.to_json + api_secret)
 
       attributes = {
-        :results =&gt; {
-          :auth_token =&gt; auth_token,
-          :project_code =&gt; project_code,
-          :content =&gt; content
+        :results => {
+          :auth_token => auth_token,
+          :project_code => project_code,
+          :content => content
         }
       }
-      options = { :body =&gt; attributes.to_json }
+      options = { :body => attributes.to_json }
       response = self.post("https://api-global.appen.com/results/#{api_key}", options)
     end
 
@@ -217,25 +215,25 @@ The returned JSON body consists of a return code, return msg and results block.
 | Results |  Count_document_score |  Current count of document scores for documents associated with this request. |  &nbsp; |
 | Results |  Collection_complete |  Flag signaling that this collection has been marked complete. |  Note: No further submissions will be accepted on this collection. |
 
-#### Ruby Example
+#### Get_project_status Ruby Example
 
 | ----- |
 |
 
     def get_project_status(collection_code=nil)
       content = {
-        :collection_code =&gt; 'Collection Name'  # Optional collection name filter
+        :collection_code => 'Collection Name'  # Optional collection name filter
       }
       auth_token = Digest::MD5.hexdigest(content.to_json + api_secret)
 
       attributes = {
-        :project_status =&gt; {
-          :auth_token =&gt; auth_token,
-          :project_code =&gt; project_code,
-          :content =&gt; content
+        :project_status => {
+          :auth_token => auth_token,
+          :project_code => project_code,
+          :content => content
         }
       }
-      options = { :body =&gt; attributes.to_json }
+      options = { :body => attributes.to_json }
       response = self.post("https://api-global.appen.com/project_status/#{api_key}", options)
     end
 
@@ -253,13 +251,7 @@ URL:&nbsp;<https: api-global.appen.com="" api="" v2="" global_status="">&lt;[api
 | Resource |  Description |
 | GET /api/v2/global_status/<api_key> |  Can be used to validate API is up and running. 200 "OK" returned. |
 
-&nbsp;
 
-&nbsp;
-
-&nbsp;
-
-&nbsp;
 
 [1]: http://en.wikipedia.org/wiki/RESTful
 [2]: http://en.wikipedia.org/wiki/JSON
