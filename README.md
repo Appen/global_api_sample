@@ -35,6 +35,7 @@ The Submit API consists of an HTTPS POST with the API Key in the URL and an asso
 URL:&nbsp;[https://api-global.appen.com/api/v2/submit/api_key][3]
 
 | Resource |  Description |
+|---------------------------------------------|-----------------------------------------------------|
 | POST /api/v2/submit/api_key/attributes.json |  API to submit content to the Appen Global Platform |
 
 The JSON body consists of an _submission_ block with nested _content_ block. &nbsp;The _content_ block includes a nested _document_ block. Document blocks must include a _project_code_ and _auth_token_ while content blocks may include an optional _source_id_ field.
