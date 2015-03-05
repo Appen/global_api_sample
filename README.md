@@ -76,7 +76,7 @@ MD5 hash of content block and API Secret.
 | Content |  document { } |  document block |  See Document block parameters. |
 | Document |  project specific params... |  Include all params required for the project. |  &nbsp; |
 
-#### Ruby Example
+#### Submit Ruby Example
 
 |
 
@@ -148,11 +148,9 @@ The returned JSON body consists of a return code, return msg and results block.
 | Results |  current_score_id |  Id of document score record considered the current score of record. This may be updated until project is complete. |  &nbsp; |
 | Results |  audited |  Audited flag |  &nbsp; |
 
-#### Ruby Example
+#### Results Ruby Example
 
-| ----- |
 |
-
     def get_results(ids)
       content = {
         :ids =&gt; ids
@@ -175,8 +173,6 @@ The returned JSON body consists of a return code, return msg and results block.
       options = { :body =&gt; attributes.to_json }
       response = self.post("https://api-global.appen.com/results/#{api_key}", options)
     end
-
- |
 
 &nbsp;
 
