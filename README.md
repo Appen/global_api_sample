@@ -93,6 +93,29 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
       response = self.post("https://api-global.appen.com/api/v2/submit/#{api_key}", options)
     end
 
+#### Document Format for Multiple Items
+
+When projects require multiple elements to be judged on a single document, the document JSON should be formatted with the repeating headers occuring after all single element headers:
+|
+
+    def submit
+      content = {
+        :source_id => source_id,
+        :collection_code => 'Collection Name',
+        :document =>  {
+          :unique_id => '12345',
+          :query => query,
+          :url => item 1 url,
+          :description => 'item 1 description',
+          :url => item 2 url,
+          :description => 'item 2 description',
+          :url => item 3 url,
+          :description => 'item 3 description'
+        }
+      }
+      ...
+    end
+
 
 ### Retrieving Results
 
