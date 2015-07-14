@@ -95,7 +95,7 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 
 #### Document Format for Multiple Items
 
-When projects require multiple elements to be judged on a single document, the document JSON should be formatted with the repeating headers occuring after all single element headers:
+When projects require multiple elements to be judged on a single document, the document JSON should be formatted with the repeating headers occuring after all single element headers in an array of hashes named 'mulitple'.  Each hash also contains a sequencing key named 'sequence' which is used to specify item ordering in the UI.
 |
 
     def submit
@@ -105,12 +105,16 @@ When projects require multiple elements to be judged on a single document, the d
         :document =>  {
           :unique_id => '12345',
           :query => query,
-          :url => item 1 url,
-          :description => 'item 1 description',
-          :url => item 2 url,
-          :description => 'item 2 description',
-          :url => item 3 url,
-          :description => 'item 3 description'
+          :multiple => [
+            { :url => item 1 url,
+              :description => 'item 1 description',
+              :sequence => 1 },
+            { :url => item 2 url,
+              :description => 'item 2 description',
+              :sequence => 2 },
+            { :url => item 3 url,
+              :description => 'item 3 description',
+              :sequence => 3 } ]
         }
       }
       ...
