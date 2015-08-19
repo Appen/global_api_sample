@@ -89,7 +89,8 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
           :content => content
         }
       }
-      options = { :body => attributes.to_json }
+      options = { body: attributes.to_json,
+                  headers: { 'Content-Type' => 'application/json', 'Accept' => 'application/json'} }
       response = self.post("https://api-global.appen.com/api/v2/submit/#{api_key}", options)
     end
 
@@ -161,7 +162,8 @@ The returned JSON body consists of a return code, return msg and results block.
           :content => content
         }
       }
-      options = { :body => attributes.to_json }
+      options = { body: attributes.to_json,
+                  headers: { 'Content-Type' => 'application/json', 'Accept' => 'application/json'} }
       response = self.post("https://api-global.appen.com/results/#{api_key}", options)
     end
 
@@ -223,7 +225,8 @@ The returned JSON body consists of a return code, return msg and results block.
           :content => content
         }
       }
-      options = { :body => attributes.to_json }
+      options = { body: attributes.to_json,
+                  headers: { 'Content-Type' => 'application/json', 'Accept' => 'application/json'} }
       response = self.post("https://api-global.appen.com/project_status/#{api_key}", options)
     end
 
