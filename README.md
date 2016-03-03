@@ -67,12 +67,13 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 | Content |  collection_code |  Document collection name |  Optional customer supplied string used to filter documents in Results(). |
 | Content |  content_timestamp_utc |  Content timestamp in UTC |  &nbsp; |
 | Content |  document { } |  document block |  See Document block parameters. |
-| Document |  project specific params... |  Include all params required for the project. |  &nbsp; |
+| Document |  project specific params... |  Include all params required for Content Relevance (CR) projects. Multi-Content Relevance (MCR) projects require items to be blocked in an array of content named 'multiple', each with an included 'sequence' number.  See examples in submit below for CR and MCR content.| &nbsp; |
 
 #### Submit Ruby Example
 |
 
     def submit
+      # CR Content
       content = {
         :source_id => source_id,
         :collection_code => 'Collection Name',
@@ -81,12 +82,31 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
           :url => url
         }
       }
+      # MCR Content
+      multi_content = {
+        :source_id => source_id,
+        :collection_code => 'Collection Name',
+        :document =>  {
+          :query => query,
+          :multiple => [
+            {:url => url1,
+             :product_title => product_title1,
+             :sequence => 0
+            },
+            {:url => url2,
+             :product_title => product_title2,
+             :sequence => 1
+            }
+          ]
+        }
+      }
+
       auth_token = Digest::MD5.hexdigest(content.to_json + api_secret)
       attributes = {
         :submission => {
           :auth_token => auth_token,
           :project_code => project_code,
-          :content => content
+          :content => content  # Or multi_content for MCR project type
         }
       }
       options = { body: attributes.to_json,
