@@ -68,7 +68,7 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 | Content |  content_timestamp_utc |  Content timestamp in UTC |  &nbsp; |
 | Content |  document { } |  document block |  See Document block parameters. |
 | Document |  project specific params... |  Include all params required for Content Relevance (CR) projects. Multi-Content Relevance (MCR) projects require items to be blocked in an array of content named 'multiple', each with an included 'sequence' number.  See examples in submit below for CR and MCR content.| &nbsp; |
-| Document |  imageblob |  Imageblob is a special case document parameter to pass base64 encoded image files into Appen Global.  | ImageBlob side-search must be enabled.<br> File size limit of 100kb.<br> Supported file types include JPG and PNG.|
+| Document |  imageblob |  Imageblob is a special case document parameter to pass base64 encoded image files into Appen Global.  | ImageBlob side-search must be enabled.<br> File size limit of 100kb.<br> Supported file types include JPG, PNG and GIF.<br> Note: 502 Bad Gateway errors indicate oversize images |
 
 #### Submit Ruby Example
 |
