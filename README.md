@@ -67,7 +67,7 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 | Content |  collection_code |  Document collection name |  Optional customer supplied string used to filter documents in Results(). |
 | Content |  content_timestamp_utc |  Content timestamp in UTC |  &nbsp; |
 | Content |  document { } |  document block |  See Document block parameters. |
-| Document |  project specific params... |  Include all params required for Content Relevance (CR) projects. Multi-Content Relevance (MCR) projects require items to be blocked in an array of content named 'multiple', each with an included 'sequence' number.  See examples in submit below for CR and MCR content.| &nbsp; |
+| Document |  project specific params... |  Include all params required for Content Relevance (CR) projects. Multi-Content Relevance (MCR) and Side By Side (SxS) projects require items to be blocked in an array of content named 'multiple', each with an included 'sequence' number.  See examples in submit below for CR and MCR content.| &nbsp; |
 | Document |  imageblob |  Imageblob is a special case document parameter to pass base64 encoded image files into Appen Global.  | ImageBlob side-search must be enabled.<br> File size limit of 100kb.<br> Supported file types include JPG, PNG and GIF.<br> Note: 502 Bad Gateway errors indicate oversize images |
 | Document |  available_to_user_email |  Available_to_user_email specifies a user in Appen Global that will have access to work on the document identified by their email in the system | If specified, only this user will be able to work on the document.<br> If the email doesn't exist in Appen Global, it will be ignored and the document will be available to any user. |
 
@@ -85,6 +85,18 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
           :url => url
         }
       }
+      
+      # CR with screencap Content
+      content = {
+        :source_id => source_id,
+        :collection_code => 'Collection Name',
+        :document =>  {
+          :query => query,
+          :sslayer_url => url,
+          :screencap_url_image => nil
+        }
+      }
+      
       # MCR Content
       multi_content = {
         :source_id => source_id,
@@ -102,6 +114,59 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
             }
           ],
           :imageblob => "iVBORw0KG ... SuQmCC",
+          :available_to_user_email => user_email
+        }
+      }
+      
+      # SxS content
+        multi_content = {
+        :source_id => source_id,
+        :collection_code => 'Collection Name',
+        :document =>  {
+          :query => query,
+          :url_1 => url1,
+          :product_title_1 => product_title1,
+          :url_2 => url2,
+          :product_title_2 => product_title2,
+          :multiple => [
+            {:url => url1,
+             :product_title => product_title1,
+             :sequence => 0
+            },
+            {:url => url2,
+             :product_title => product_title2,
+             :sequence => 1
+            }
+          ],
+          :available_to_user_email => user_email
+        }
+      }
+      
+      
+    # SxS with image capture content (this example with use ScreenshotLayer to do screencap for item 1 and Grabz.it to do screenshot for item 2. See Screencap Test API for other screencap options)
+        multi_content = {
+        :source_id => source_id,
+        :collection_code => 'Collection Name',
+        :document =>  {
+          :query => query,
+          :sslayer_url_grouped_1 => url1,
+          :grabzit_url_grouped_1 => nil,
+          :screencap_url_img_grouped_1 => nil,
+          :sslayer_url_grouped_2 => nil,
+          :grabzit_url_grouped_2 => url2,
+          :screencap_url_img_grouped_2 => nil,
+          :multiple => [
+            {:sslayer_url_grouped => url1,
+             :grabzit_url_grouped => nil,
+             :screencap_url_img_grouped => nil
+             :sequence => 0
+            },
+            {:sslayer_url_grouped => nil,
+             :grabzit_url_grouped => url2,
+             :screencap_url_img_grouped => nil,
+             :sequence => 1
+            }
+          ],
           :available_to_user_email => user_email
         }
       }
