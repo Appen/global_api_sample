@@ -38,19 +38,19 @@ URL:&nbsp;[https://api-global.appen.com/api/v2/submit/&lt;api_key&gt;][3]
 |---------------------------------------------|-----------------------------------------------------|
 | POST /api/v2/submit/api_key/attributes.json |  API to submit content to the Appen Global Platform |
 
-The JSON body consists of an _submission_ block with nested _content_ block. &nbsp;The _content_ block includes a nested _document_ block. Document blocks must include a _project_code_ and _auth_token_ while content blocks may include an optional _source_id_ field.
+The attributes JSON body consists of a _submission_ block with a nested _content_ block. &nbsp;The _content_ block includes a nested _document_ block. Document blocks must include a _project_code_ and _auth_token_ while content blocks may include an optional _source_id_ field.
 
 |
 
-    attribute_body = {
-      :submission => {
-        :project_code => xxx,
-        :auth_token => xxx,
+    {
+      "submission":{
+        "project_code":"xxx_project_code",
+        "auth_token":"calculatedauthtoken",
         ...,
-        :content => {
-          :source_id => xxx,
+        "content":{
+          "source_id":"unique_string_to_id_document",
           ...,
-          :document {
+          "document":{
             ...
           }
         }
@@ -235,7 +235,7 @@ The returned JSON body consists of a return code, return msg and results block.
 | Results |  current_score_id |  Id of document score record considered the current score of record. This may be updated until project is complete. |  &nbsp; |
 | Results |  audited |  Audited flag |  &nbsp; |
 
-#### Results Ruby Example
+#### Results Ruby/Rails Example
 |
 
     def get_results(ids)
