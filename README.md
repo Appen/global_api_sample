@@ -71,8 +71,13 @@ The JSON body consists of an _submission_ block with nested _content_ block. &nb
 | Document |  imageblob |  Imageblob is a special case document parameter to pass base64 encoded image files into Appen Global.  | ImageBlob side-search must be enabled.<br> File size limit of 100kb.<br> Supported file types include JPG, PNG and GIF.<br> Note: 502 Bad Gateway errors indicate oversize images |
 | Document |  available_to_user_email |  Available_to_user_email specifies a user in Appen Global that will have access to work on the document identified by their email in the system | If specified, only this user will be able to work on the document.<br> If the email doesn't exist in Appen Global, it will be ignored and the document will be available to any user. |
 
+#### Submit CURL Example
 
-#### Submit Ruby Example
+
+> curl -X POST -H "Content-type:application/json" -d '{"submission":{"auth_token":"Insert_calculated_authtoken_here","project_code":"cool_project_code","content":{"collection_code":"cool_test_collection","document":{"query":"query tokens"},"source_id":"unique_id"}}}' https://api-global.appen.com/api/v2/submit/api_key
+
+
+#### Submit Ruby/Rails Content Block Examples
 |
 
     def submit
