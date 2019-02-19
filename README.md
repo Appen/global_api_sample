@@ -44,7 +44,7 @@ Ruby code example:
 
     api_key = '<YOUR KEY HERE>'
 
-    uri = URI.parse("https://api-global-qa.appen.com/api/v2/global_status/#{api_key}")
+    uri = URI.parse("https://api-global.appen.com/api/v2/global_status/#{api_key}")
 
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Get.new(uri.request_uri)
