@@ -42,18 +42,18 @@ URL: [https://api-global.appen.com/api/v2/global_status/&lt;api_key&gt;][6]
 
 Ruby code example:
 
-  api_key = '<YOUR KEY HERE>'
+    api_key = '<YOUR KEY HERE>'
 
-  uri = URI.parse("https://api-global-qa.appen.com/api/v2/global_status/#{api_key}")
+    uri = URI.parse("https://api-global-qa.appen.com/api/v2/global_status/#{api_key}")
 
-  http = Net::HTTP.new(uri.host, uri.port)
-  request = Net::HTTP::Get.new(uri.request_uri)
-  http.use_ssl = true
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Get.new(uri.request_uri)
+    http.use_ssl = true
 
-  response = http.request(request)
+    response = http.request(request)
 
-  puts "Code: #{response.code}"
-  puts "Body: #{response.body}" 
+    puts "Code: #{response.code}"
+    puts "Body: #{response.body}" 
   
 ### Submitting Content
 
@@ -69,7 +69,7 @@ URL:&nbsp;[https://api-global.appen.com/api/v2/submit/&lt;api_key&gt;][3]
 
 The attributes JSON body consists of a _submission_ block with a nested _content_ block. &nbsp;The _content_ block includes a nested _document_ block. Document blocks must include a _project_code_ and _auth_token_ while content blocks may include an optional _source_id_ field.
 
-|
+
 
     {
       "submission":{
@@ -107,7 +107,7 @@ The attributes JSON body consists of a _submission_ block with a nested _content
 
 
 #### Submit Ruby/Rails Content Block Examples
-|
+
 
     def submit
       # CR Content
@@ -265,7 +265,7 @@ The returned JSON body consists of a return code, return msg and results block.
 | Results |  audited |  Audited flag |  &nbsp; |
 
 #### Results Ruby/Rails Example
-|
+
 
     def get_results(ids)
       content = {
@@ -334,7 +334,7 @@ The returned JSON body consists of a return code, return msg and results block.
 | Results |  Collection_complete |  Flag signaling that this collection has been marked complete. |  Note: No further submissions will be accepted on this collection. |
 
 #### Get_project_status Ruby Example
-|
+
 
     def get_project_status(collection_code=nil)
       content = {
