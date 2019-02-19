@@ -8,13 +8,13 @@ Found a problem with the sample code? <a href="https://github.com/Appen/global_a
 This document describes the RESTful Appen Global API.<br>
 Appen Global API is currently at version _**'v2'**_.
 
-### Introduction
+## Introduction
 
 This document is intended for Appen clients who need to programmatically interact with the Appen Global. &nbsp;With Global API's, you can submit content to be analyzed and then retrieve the results after work on the message has been completed.
 
 Global API's are based on the [RESTful][1] concept and use [JSON][2] containers both for message submission and for returning results.
 
-#### Authentication
+### Authentication
 
 In order to call the Global API's, Appen must issue each client an API Key and API Secret.
 
@@ -22,10 +22,39 @@ In order to call the Global API's, Appen must issue each client an API Key and A
 
 >API Secret: &nbsp; (string) &nbsp;Each Client is assigned an API Secret which is used by the client to create an authentication token based on a combination of the message content and API Key. The API Secret is also used by the server to validate requests. &nbsp;Used in combination with Global API, all transactions can be authenticated and validated for authorized access.
 
-#### SSL
+### SSL
 
 For security, all Global REST API's use HTTPS. &nbsp;HTTP protocol is not supported.
 
+## API Calls
+
+### API Status
+
+#### Global_status/
+
+The Checkup API consists of an HTTPS GET and returns 200 "OK" when operating normally.
+
+URL: [https://api-global.appen.com/api/v2/global_status/&lt;api_key&gt;][6]
+
+| Resource |  Description |
+|---------------------------------------------|-----------------------------------------------------|
+| GET /api/v2/global_status/<api_key> |  Can be used to validate API is up and running. 200 "OK" returned. |
+
+Ruby code example:
+
+  api_key = '<YOUR KEY HERE>'
+
+  uri = URI.parse("https://api-global-qa.appen.com/api/v2/global_status/#{api_key}")
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  request = Net::HTTP::Get.new(uri.request_uri)
+  http.use_ssl = true
+
+  response = http.request(request)
+
+  puts "Code: #{response.code}"
+  puts "Body: #{response.body}" 
+  
 ### Submitting Content
 
 #### Submit/
@@ -325,18 +354,6 @@ The returned JSON body consists of a return code, return msg and results block.
       response = self.post("https://api-global.appen.com/project_status/#{api_key}", options)
     end
 
-
-### API Status
-
-#### Global_status/
-
-The Checkup API consists of an HTTPS GET and returns 200 "OK" when operating normally.
-
-URL:&nbsp;[https://api-global.appen.com/api/v2/global_status/&lt;api_key&gt;][6]
-
-| Resource |  Description |
-|---------------------------------------------|-----------------------------------------------------|
-| GET /api/v2/global_status/<api_key> |  Can be used to validate API is up and running. 200 "OK" returned. |
 
 
 [1]: http://en.wikipedia.org/wiki/RESTful
